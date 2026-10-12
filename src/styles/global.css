@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+  --my-grid: repeat(11, minmax(0, 119px));
+}
