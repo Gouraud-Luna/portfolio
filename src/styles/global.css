@@ -12,6 +12,20 @@
   column-gap: var(--my-grid-gap);
 }
 
+@utility portfolio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 96px;
+  padding: 20px 30px;
+  transition: transform 200ms;
+
+  &:focus-visible {
+    outline: 2px currentColor;
+  }
+}
+
 @plugin "daisyui/theme" {
 
   name: "base";

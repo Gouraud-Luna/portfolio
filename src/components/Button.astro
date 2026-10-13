@@ -1,0 +1,43 @@
+---
+type ButtonColor = "primary" | "secondary" | "accent";
+
+interface Props {
+  color?: ButtonColor;
+  outline?: boolean;
+  elevated?: boolean;
+  href?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+const {
+  color = "primary",
+  outline = false,
+  elevated = false,
+  href,
+  type = "button",
+} = Astro.props;
+
+const colorClasses = {
+  primary: outline ? "btn-outline btn-primary" : "btn-primary",
+  secondary: outline ? "btn-outline btn-secondary" : "btn-secondary",
+  accent: outline ? "btn-outline btn-accent" : "btn-accent",
+} as const;
+
+const classes = [
+  "btn portfolio-button",
+  colorClasses[color],
+  elevated && "shadow-[-4px_4px_2px_#FFB7C5]",
+];
+---
+
+{
+  href ? (
+    <a class:list={classes} href={href}>
+      <slot />
+    </a>
+  ) : (
+    <button class:list={classes} type={type}>
+      <slot />
+    </button>
+  )
+}
