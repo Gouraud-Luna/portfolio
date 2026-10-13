@@ -1,5 +1,81 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 @theme {
   --my-grid: repeat(11, minmax(0, 119px));
+  --my-grid-gap: 20px;
+}
+
+@utility portfolio-grid {
+  display: grid;
+  grid-template-columns: var(--my-grid);
+  column-gap: var(--my-grid-gap);
+}
+
+@plugin "daisyui/theme" {
+
+  name: "base";
+
+  default: true;
+
+  prefersdark: false;
+
+  color-scheme: "light";
+
+  --color-base-100: #F7F4F0;
+
+  --color-base-200: #EDE9E4;
+
+  --color-base-300: #D8D2CB;
+
+  --color-base-content: #1A1714;
+
+  --color-primary: #B5507A;
+
+  --color-primary-content: #FFFFFF;
+
+  --color-secondary: #9B6B9B;
+
+  --color-secondary-content: #FFFFFF;
+
+  --color-accent: #7DB87D;
+
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #4A453F;
+
+  --color-neutral-content: #F7F4F0;
+
+  --color-info: #5B9BD5;
+
+  --color-info-content: #FFFFFF;
+
+  --color-success: #5BA85B;
+
+  --color-success-content: #FFFFFF;
+
+  --color-warning: #D4A843;
+
+  --color-warning-content: #1A1714;
+
+  --color-error: #D94F70;
+
+  --color-error-content: #FFFFFF;
+
+  --radius-selector: 0.5rem;
+
+  --radius-field: 0.25rem;
+
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+
+  --size-field: 0.25rem;
+
+  --border: 1px;
+
+  --depth: 1;
+
+  --noise: 0;
+
 }
