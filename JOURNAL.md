@@ -1,0 +1,1 @@
+Semaine 1 : création du dépôt github et du projet astro. Création du composant Header presque complète et du composant Button.
