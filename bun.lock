@@ -5,6 +5,8 @@
     "": {
       "name": "mon-portfolio",
       "dependencies": {
+        "@fontsource/imperial-script": "^5.3.0",
+        "@fontsource/outfit": "^5.3.0",
         "@tailwindcss/vite": "^4.0.0",
         "astro": "^7.3.8",
         "tailwindcss": "^4.0.0",
@@ -84,6 +86,10 @@
     "@emnapi/runtime": ["@emnapi/runtime@1.11.3", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA=="],
 
     "@emnapi/wasi-threads": ["@emnapi/wasi-threads@1.2.3", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g=="],
+
+    "@fontsource/imperial-script": ["@fontsource/imperial-script@5.3.0", "", {}, "sha512-AeVSujJupsyHkfqOZucLcW2tNurQLQSp4AmZ7COh70QriRHXbYCzevad+xyvpAN8GvAvEwcVU0QYmXy9kgaMfw=="],
+
+    "@fontsource/outfit": ["@fontsource/outfit@5.3.0", "", {}, "sha512-0AVHzTTVJSxWDOxPKSfMeHhZeBFDU3cmgrcOb76ZEyhGo0+xgyG3GsLF3h9+X8w0IX7G4jzjJgFQEBiWdX6VgA=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 
