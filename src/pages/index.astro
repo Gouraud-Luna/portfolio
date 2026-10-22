@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import trees from "../assets/trees.glb";
+import branch from "../assets/branche.svg";
 ---
 <Layout>
     <section class="relative z-0 h-screen w-full overflow-hidden">
         <model-viewer
-            class="absolute inset-x-0 top-0 block h-[calc(100%+40px)] w-full"
+            class="absolute inset-x-0 top-0 z-0 block h-[calc(100%+40px)] w-full"
             src={trees}
             alt="Modèle 3D d'arbres"
             camera-controls
@@ -18,6 +19,20 @@ import trees from "../assets/trees.glb";
             shadow-intensity="1"
         ></model-viewer>
     </section>
+    <div class="relative z-20 -mt-[200px] h-[367.44px] w-full">
+        <img
+            class="pointer-events-none absolute left-1/2 top-0 h-[367.44px] w-[1512px] max-w-none -translate-x-1/2"
+            src={branch.src}
+            alt=""
+            aria-hidden="true"
+            width="1512"
+            height="367.44"
+        />
+    </div>
+    <div>
+        <h1>Bienvenue <br/>
+        dans mon jardin en <span class="text-primary stroke-secondary">effervescence.</span></h1>
+    </div>
 </Layout>
 <script>
     import "@google/model-viewer";
