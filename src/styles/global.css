@@ -1,9 +1,38 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import "@fontsource/imperial-script";
+@import "@fontsource/outfit";
 
 @theme {
   --my-grid: repeat(11, minmax(0, 119px));
   --my-grid-gap: 20px;
+
+    --font-title: "Outfit", sans-serif;
+    --font-family: "Outfit", sans-serif;
+     --text-h1: 96px;
+    --text-h2: 67px;
+    --text-h3: 54px;
+    --text-bodyl: 28px;
+    --text-bodyr: 22px;
+    --text-bodys: 18px;
+    --text-haccent: 116px;
+}
+
+h1 {
+  font-family: var(--font-title);
+  font-size: var(--text-h1);
+}
+h2 {
+  font-family: var(--font-title);
+  font-size: var(--text-h2);
+}
+h3 {
+  font-family: var(--font-title);
+  font-size: var(--text-h3);
+}
+.accent-title {
+  font-family: "Imperial Script";
+  font-size: var(--text-haccent);
 }
 
 @utility portfolio-grid {
@@ -24,6 +53,11 @@
   &:focus-visible {
     outline: 2px currentColor;
   }
+}
+
+@utility text-stroke-secondary {
+  -webkit-text-stroke: 1px var(--color-secondary);
+  paint-order: stroke fill;
 }
 
 @plugin "daisyui/theme" {
