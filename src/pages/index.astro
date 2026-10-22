@@ -1,7 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import trees from "../assets/trees.glb";
 ---
 <Layout>
-
+    <section class="relative z-0 h-screen w-full overflow-hidden">
+        <model-viewer
+            class="absolute inset-x-0 top-0 block h-[calc(100%+40px)] w-full"
+            src={trees}
+            alt="Modèle 3D d'arbres"
+            camera-controls
+            camera-orbit="0deg 80deg 2m"
+            camera-target="0m 0.4m 0m"
+            min-camera-orbit="-8deg 76deg 2.5m"
+            max-camera-orbit="8deg 80deg 2m"
+            disable-zoom
+            touch-action="pan-y"
+            shadow-intensity="1"
+        ></model-viewer>
+    </section>
 </Layout>
+<script>
+    import "@google/model-viewer";
+</script>

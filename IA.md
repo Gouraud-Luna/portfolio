@@ -1,1 +1,2 @@
 Semaine 1 : Utilisation de l'agent Chat-gpt avec copilot pour la création du composant Button, afin qu'il crée un composant unique pour tout les bouton et que les couleurs sois interchangeable facilement.
+Semaine 2 : Aide à l'intégration du fichier 3d
