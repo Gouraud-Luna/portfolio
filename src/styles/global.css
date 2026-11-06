@@ -34,6 +34,61 @@ h3 {
   font-family: "Imperial Script";
   font-size: var(--text-haccent);
 }
+
+.contact-section {
+  min-height: 510px;
+  padding: clamp(6rem, 25vh, 8.125rem) clamp(2rem, 8.4vw, 4.875rem);
+  color: #f7f4f0;
+  background-color: #191715;
+}
+
+.contact-section h2 {
+  margin: 0;
+  color: #f7f4f0;
+  font-size: clamp(2.5rem, 6.1vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.12;
+  text-align: center;
+}
+
+.contact-accent {
+  display: inline-block;
+  margin-top: 0.1em;
+  color: #b5507a;
+  font-family: "Imperial Script", cursive;
+  font-size: clamp(3.25rem, 6.5vw, 4rem);
+  line-height: 0.75;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2rem 4rem;
+  margin-top: clamp(3.5rem, 12.5vh, 4.25rem);
+  margin-left: clamp(-1.25rem, -2.15vw, 0rem);
+  font-family: var(--font-family);
+  font-size: clamp(0.75rem, 1.4vw, 0.875rem);
+}
+
+.contact-links p {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.contact-links a {
+  text-underline-offset: 0.15em;
+}
+
+.contact-email {
+  color: #7db87d;
+}
+
+.contact-linkedin {
+  color: #9b6b9b;
+}
 .bodyr{
   font-family: var(--font-family);
   font-size: var(--text-bodyr);
