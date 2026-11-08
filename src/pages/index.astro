@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import trees from "../assets/trees.glb";
 import branch from "../assets/branche.svg";
 ---
-<Layout>
+<Layout title="Acceuil" bodyClass="home-page">
     <section class="relative z-0 h-screen w-full overflow-hidden">
         <model-viewer
             class="absolute inset-x-0 top-0 z-0 block h-[calc(100%+40px)] w-full"
@@ -29,7 +29,7 @@ import branch from "../assets/branche.svg";
             height="367.44"
         />
     </div>
-    <div>
+    <div class="whitespace-nowrap lg:portfolio-grid lg:col-start-1">
         <h1>Bienvenue <br/>
         dans mon jardin en <span class="accent-title text-primary text-stroke-secondary">effervescence.</span></h1>
     </div>
