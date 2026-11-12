@@ -1,4 +1,4 @@
 Semaine 1 : Utilisation de l'agent Chat-gpt avec copilot pour la création du composant Button, afin qu'il crée un composant unique pour tout les bouton et que les couleurs sois interchangeable facilement.
 Semaine 2 : Aide à l'intégration du fichier 3d, adaptation de l'image branche au dessus de la scène 3d, intégration de la typo dans le fichier global.css.
 Semaine 3 : Changement de fond pour le footer sur une seule page (index), aide au fix du header et du footer.
-Semaine 4 : Intégration du pocketbase
+Semaine 4 : Intégration du pocketbase, et des composants Projet et Compétences.

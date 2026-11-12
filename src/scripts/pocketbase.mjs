@@ -28,8 +28,14 @@ export async function getProjet(id) {
     }
 }
 
-export function getImageUrl(record, recordImage) {
-    return pb.files.getURL(record, recordImage);
+export function getImageUrl(record, recordImage, thumb = "480x0") {
+    const firstImage = Array.isArray(recordImage)
+        ? recordImage[0]
+        : recordImage;
+
+    return firstImage
+        ? pb.files.getURL(record, firstImage, { thumb })
+        : "";
 }
 
 export async function addProjet(projet) {

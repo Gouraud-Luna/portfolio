@@ -1,0 +1,65 @@
+---
+import { getImageUrl, getProjets } from "../scripts/pocketbase.mjs";
+
+const projets = await getProjets();
+const projetsAvecImage = projets.map((projet) => ({
+    projet,
+    image: Array.isArray(projet.Image) ? projet.Image[0] : projet.Image,
+}));
+---
+
+<section class="w-full" aria-labelledby="projets-title">
+    <h2 id="projets-title" class="sr-only">Projets</h2>
+    {
+        projets.length > 0 ? (
+            <div class="flex flex-col gap-10">
+                {projetsAvecImage.map(({ projet, image }) => (
+                    <article class="grid items-center gap-6 md:grid-cols-[280px_minmax(0,1fr)] md:gap-4">
+                        <div class="aspect-[1.4] w-full overflow-hidden bg-primary">
+                            {image ? (
+                                <img
+                                    src={getImageUrl(projet, image)}
+                                    alt={`Image du projet ${projet.Titre}`}
+                                    class="h-full w-full scale-[1.15] object-contain object-center"
+                                />
+                            ) : (
+                                <div
+                                    class="h-full w-full bg-primary"
+                                    aria-hidden="true"
+                                />
+                            )}
+                        </div>
+                        <div class="min-w-0">
+                            <div class="mb-4">
+                                <p class="text-sm text-accent">
+                                    {Array.isArray(projet.Tag)
+                                        ? projet.Tag.join(", ")
+                                        : projet.Tag}
+                                </p>
+                                <p class="text-sm text-secondary">
+                                    {projet.Anne}
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between gap-2">
+                                <h3 class="font-serif text-2xl font-normal uppercase leading-none text-base-content sm:text-3xl">
+                                    {projet.Titre}
+                                </h3>
+                                <a
+                                    href={`/projets/${projet.id}`}
+                                    class="shrink-0 text-2xl text-primary underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70 sm:text-3xl"
+                                >
+                                    Le projet →
+                                    <span class="sr-only">
+                                        {projet.Titre}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        ) : (
+            <p class="bodyr text-neutral">Aucun projet disponible.</p>
+        )
+    }
+</section>
