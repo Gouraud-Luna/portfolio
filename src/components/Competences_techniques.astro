@@ -1,0 +1,36 @@
+---
+import { getCompetencesTechniques } from "../scripts/pocketbase.mjs";
+
+const competences = await getCompetencesTechniques();
+---
+
+<section class="w-[309px]" aria-labelledby="technical-skills-title">
+    <h2 class="sr-only bodyl">
+        Compétences techniques
+    </h2>
+    {
+        competences.length > 0 ? (
+            <div>
+                {competences.map((competence) => (
+                    <article class="flex min-h-[6.5rem] flex-col items-center justify-center rounded-[2rem] bg-primary px-5 py-4 text-center text-white">
+                        <h3 class="font-family text-xl font-normal leading-tight">
+                            {competence.Nom}
+                        </h3>
+                        <p class="mt-2.5 font-family text-sm leading-tight">
+                            {competence.Desc}
+                        </p>
+                        {competence.Acquisition && (
+                            <span class="mt-1 font-family text-base leading-none">
+                                {competence.Acquisition}
+                            </span>
+                        )}
+                    </article>
+                ))}
+            </div>
+        ) : (
+            <p class="font-family text-base text-neutral">
+                Aucune compétence technique disponible.
+            </p>
+        )
+    }
+</section>

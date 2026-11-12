@@ -1,0 +1,105 @@
+import PocketBase from "pocketbase";
+
+const pocketbaseUrl =
+    import.meta.env.PUBLIC_POCKETBASE_URL ?? "http://127.0.0.1:8090";
+
+export const pb = new PocketBase(pocketbaseUrl);
+
+export async function getProjets() {
+    try {
+        return await pb.collection("Projets").getFullList({
+            sort: "-created",
+        });
+    } catch (error) {
+        console.error(
+            "Une erreur est survenue en lisant la liste des projets",
+            error,
+        );
+        return [];
+    }
+}
+
+export async function getProjet(id) {
+    try {
+        return await pb.collection("Projets").getOne(id);
+    } catch (error) {
+        console.error("Une erreur est survenue en lisant le projet", error);
+        return null;
+    }
+}
+
+export function getImageUrl(record, recordImage) {
+    return pb.files.getURL(record, recordImage);
+}
+
+export async function addProjet(projet) {
+    try {
+        await pb.collection("Projets").create(projet);
+        return {
+            success: true,
+            message: "Projet ajouté avec succès",
+        };
+    } catch (error) {
+        console.error("Une erreur est survenue en ajoutant le projet", error);
+        return {
+            success: false,
+            message: "Une erreur est survenue en ajoutant le projet",
+        };
+    }
+}
+
+export async function getCompetencesLogiciels() {
+    try {
+        return await pb
+            .collection("Competences_logiciel")
+            .getFullList({
+                sort: "Nom",
+            });
+    } catch (error) {
+        console.error(
+            "Une erreur est survenue en lisant les compétences logiciel",
+            error,
+        );
+        return [];
+    }
+}
+
+export async function getCompetenceLogiciel(id) {
+    try {
+        return await pb.collection("Competences_logiciel").getOne(id);
+    } catch (error) {
+        console.error(
+            "Une erreur est survenue en lisant la compétence logiciel",
+            error,
+        );
+        return null;
+    }
+}
+
+export async function getCompetencesTechniques() {
+    try {
+        return await pb
+            .collection("Competences_techniques")
+            .getFullList({
+                sort: "Nom",
+            });
+    } catch (error) {
+        console.error(
+            "Une erreur est survenue en lisant les compétences techniques",
+            error,
+        );
+        return [];
+    }
+}
+
+export async function getCompetenceTechnique(id) {
+    try {
+        return await pb.collection("Competences_techniques").getOne(id);
+    } catch (error) {
+        console.error(
+            "Une erreur est survenue en lisant la compétence technique",
+            error,
+        );
+        return null;
+    }
+}
