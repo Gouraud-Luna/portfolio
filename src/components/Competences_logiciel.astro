@@ -1,0 +1,59 @@
+---
+import { getImageUrl, getCompetencesLogiciels } from "../scripts/pocketbase.mjs";
+
+const competences = await getCompetencesLogiciels();
+const cardColors = [
+    ["bg-primary", "text-primary-content"],
+    ["bg-secondary", "text-secondary-content"],
+    ["bg-accent", "text-accent-content"],
+];
+---
+
+<section class="w-full" aria-labelledby="software-skills-title">
+    <h2 id="software-skills-title" class="sr-only">Compétences logiciel</h2>
+    {
+        competences.length > 0 ? (
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {competences.map((competence, index) => {
+                    const [backgroundColor, textColor] =
+                        cardColors[index % cardColors.length];
+
+                    return (
+                        <article
+                            class:list={[
+                                "relative flex h-[358px] w-[413px] max-w-full flex-col justify-end overflow-hidden rounded-[4rem] px-9 py-10",
+                                backgroundColor,
+                                textColor,
+                            ]}
+                        >
+                            <div class="absolute right-9 top-9 flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-base-300 p-4">
+                                {competence.Logo ? (
+                                    <img
+                                        src={getImageUrl(competence, competence.Logo, "160x160")}
+                                        alt={`Logo ${competence.Nom}`}
+                                        class="h-full w-full object-contain"
+                                    />
+                                ) : (
+                                    <span
+                                        class="text-center text-xs text-neutral"
+                                        aria-hidden="true"
+                                    >
+                                        {competence.Nom}
+                                    </span>
+                                )}
+                            </div>
+                            <p class="text-lg leading-tight">{competence.usage}</p>
+                            <h3 class="mt-1 text-3xl font-normal leading-tight">
+                                {competence.Nom}
+                            </h3>
+                        </article>
+                    );
+                })}
+            </div>
+        ) : (
+            <p class="text-base text-neutral">
+                Aucune compétence logiciel disponible.
+            </p>
+        )
+    }
+</section>

@@ -1,4 +1,5 @@
 ---
+import CompetencesLogiciel from "../components/Competences_logiciel.astro";
 import CompetencesTechniques from "../components/Competences_techniques.astro";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -6,9 +7,10 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Compétences">
     <div class="lg:portfolio-grid lg:col-span-11">
         <h1 class="text-primary lg:col-start-2 lg:col-span-9">Mes compétences</h1>
-        <h2 class="text-accent lg:col-start-2 lg:col-span-9">Techniques</h2>
-    <main class="px-5 py-24 lg:col-start-2 lg:col-span-9">
-        <CompetencesTechniques />
-    </main>
+        <main class="px-5 py-24 lg:col-start-2 lg:col-span-9">
+            <CompetencesLogiciel />
+            <h2 class="mt-20 text-accent">Techniques</h2>
+            <CompetencesTechniques />
+        </main>
     </div>
 </Layout>
