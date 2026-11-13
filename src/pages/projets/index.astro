@@ -4,7 +4,9 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Projets">
-    <main class="px-5 py-24">
-        <Projets />
+    <main class="px-5 py-24 lg:portfolio-grid lg:col-span-11">
+        <div class="lg:col-start-2 lg:col-span-9">
+            <Projets />
+        </div>
     </main>
 </Layout>

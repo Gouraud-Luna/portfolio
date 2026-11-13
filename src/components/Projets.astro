@@ -1,8 +1,10 @@
 ---
 import { getImageUrl, getProjets } from "../scripts/pocketbase.mjs";
 
+const { showFilters = true, limit = null } = Astro.props;
 const projets = await getProjets();
-const projetsAvecImage = projets.map((projet) => ({
+const projetsAffiches = limit ? projets.slice(0, limit) : projets;
+const projetsAvecImage = projetsAffiches.map((projet) => ({
     projet,
     image: Array.isArray(projet.Image) ? projet.Image[0] : projet.Image,
     categorie: Array.isArray(projet.Tag) ? projet.Tag.join(", ") : projet.Tag,
@@ -11,39 +13,41 @@ const projetsAvecImage = projets.map((projet) => ({
 
 <section class="w-full" aria-labelledby="projets-title">
     <h2 id="projets-title" class="sr-only">Projets</h2>
-    <div
-        class="mb-12 flex flex-wrap items-center justify-center gap-4"
-        role="group"
-        aria-label="Filtrer les projets"
-        data-project-filters
-    >
-        <button
-            type="button"
-            class="rounded-full border border-primary bg-primary px-8 py-4 text-primary-content transition-colors hover:bg-primary/80"
-            aria-pressed="true"
-            data-project-filter="tous"
+    {showFilters && (
+        <div
+            class="mb-12 flex flex-wrap items-center justify-center gap-4"
+            role="group"
+            aria-label="Filtrer les projets"
+            data-project-filters
         >
-            Tous
-        </button>
-        <button
-            type="button"
-            class="rounded-full border border-secondary px-8 py-4 text-secondary transition-colors hover:bg-secondary/10"
-            aria-pressed="false"
-            data-project-filter="personnel"
-        >
-            Personnel
-        </button>
-        <button
-            type="button"
-            class="rounded-full border border-secondary px-8 py-4 text-secondary transition-colors hover:bg-secondary/10"
-            aria-pressed="false"
-            data-project-filter="academique"
-        >
-            Académique
-        </button>
-    </div>
+            <button
+                type="button"
+                class="rounded-full border border-primary bg-primary px-8 py-4 text-primary-content transition-colors hover:bg-primary/80"
+                aria-pressed="true"
+                data-project-filter="tous"
+            >
+                Tous
+            </button>
+            <button
+                type="button"
+                class="rounded-full border border-secondary px-8 py-4 text-secondary transition-colors hover:bg-secondary/10"
+                aria-pressed="false"
+                data-project-filter="personnel"
+            >
+                Personnel
+            </button>
+            <button
+                type="button"
+                class="rounded-full border border-secondary px-8 py-4 text-secondary transition-colors hover:bg-secondary/10"
+                aria-pressed="false"
+                data-project-filter="academique"
+            >
+                Académique
+            </button>
+        </div>
+    )}
     {
-        projets.length > 0 ? (
+        projetsAffiches.length > 0 ? (
             <div class="flex flex-col gap-10" data-project-list>
                 {projetsAvecImage.map(({ projet, image, categorie }) => (
                     <article

@@ -4,9 +4,11 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Compétences">
-    <h1 class="text-primary">Mes compétences</h1>
-    <h2 class="text-accent">Techniques</h2>
-    <main class="px-5 py-24">
+    <div class="lg:portfolio-grid lg:col-span-11">
+        <h1 class="text-primary lg:col-start-2 lg:col-span-9">Mes compétences</h1>
+        <h2 class="text-accent lg:col-start-2 lg:col-span-9">Techniques</h2>
+    <main class="px-5 py-24 lg:col-start-2 lg:col-span-9">
         <CompetencesTechniques />
     </main>
+    </div>
 </Layout>

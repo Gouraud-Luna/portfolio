@@ -3,21 +3,33 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Mentions légales">
-    <h1 class="text-primary">Mentions légales</h1>
-    <ul>
-        <div>
-            <h2 class="text-accent">Hébergement</h2>
-            <p class="w-104.5">Ce site est héberger par Netlify et par Infomaniak pour le nom de domaine</p>
+    <div class="lg:portfolio-grid lg:col-span-11">
+        <h1 class="font-serif text-5xl font-normal text-primary sm:text-6xl lg:col-start-2 lg:col-span-9">
+            Crédits
+        </h1>
+        <div class="mt-12 lg:col-start-2 lg:col-span-4">
+            <h2 class="font-serif text-4xl font-normal text-accent sm:text-5xl">
+                Hébergement
+            </h2>
+            <p class="mt-4 max-w-md text-sm leading-tight">
+                Ce site est hébergé par Netlify et par Infomaniak pour le nom de domaine.
+            </p>
         </div>
-        <div>
-            <h2 class="text-accent">Conditions d'utilisation</h2>
-            <p class="w-104.5">Aucune données acquise lors de l’utilisation de ce site est utiliser à des fins commerciales.</p>
+        <div class="mt-12 lg:col-start-6 lg:col-span-5">
+            <h2 class="font-serif text-4xl font-normal text-accent sm:text-5xl">
+                Conditions d’utilisation
+            </h2>
+            <p class="mt-4 max-w-md text-sm leading-tight">
+                Aucune donnée acquise lors de l’utilisation de ce site n’est utilisée à des fins commerciales.
+            </p>
         </div>
-        <div>
-            <h2 class="text-accent">Droits d’auteurs</h2>
-            <p class="w-104.5">Chaque photos et illustrations mises à disposition sur ce site sont soumises à des droits d’auteurs.</p>
+        <div class="mt-12 lg:col-start-2 lg:col-span-4">
+            <h2 class="font-serif text-4xl font-normal text-accent sm:text-5xl">
+                Droits d’auteurs
+            </h2>
+            <p class="mt-4 max-w-md text-sm leading-tight">
+                Chaque photo et illustration mise à disposition sur ce site est soumise à des droits d’auteurs.
+            </p>
         </div>
-    </ul>
-    
-    
+    </div>
 </Layout>
