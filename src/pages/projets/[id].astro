@@ -1,0 +1,151 @@
+---
+import { getImageUrl, getProjets } from "../../scripts/pocketbase.mjs";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const projets = await getProjets();
+
+    return projets.map((projet) => ({
+        params: { id: projet.id },
+        props: { projet },
+    }));
+}
+
+const { projet } = Astro.props;
+const images = Array.isArray(projet.Image)
+    ? projet.Image
+    : projet.Image
+      ? [projet.Image]
+      : [];
+const tags = Array.isArray(projet.Tag)
+    ? projet.Tag.join(", ")
+    : projet.Tag;
+const valeur = (value) => value || "—";
+---
+
+<Layout title={projet.Titre}>
+    <main class="px-5 pb-24 pt-8 md:px-12 lg:px-20">
+        <article class="mx-auto max-w-6xl">
+            <div>
+                <div>
+                    <p class="mb-5 text-accent">{valeur(tags)}</p>
+                    <h1 class="max-w-md font-serif text-5xl font-normal leading-[0.95] text-primary sm:text-6xl">
+                        {projet.Titre}
+                    </h1>
+                </div>
+            </div>
+
+            <dl class="mt-16 grid grid-cols-2 gap-8 text-sm sm:grid-cols-4">
+                <div>
+                    <dt class="text-secondary">Année</dt>
+                    <dd class="mt-1">{valeur(projet.Anne)}</dd>
+                </div>
+                <div>
+                    <dt class="text-secondary">Rôle</dt>
+                    <dd class="mt-1">{valeur(projet.Role)}</dd>
+                </div>
+                <div>
+                    <dt class="text-secondary">Client</dt>
+                    <dd class="mt-1">{valeur(projet.Client)}</dd>
+                </div>
+            </dl>
+
+            <div class="mt-24 max-w-3xl space-y-10">
+                {projet.Contexte && (
+                    <section>
+                        <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
+                            Contexte
+                        </h2>
+                        <p class="bodyr">{projet.Contexte}</p>
+                    </section>
+                )}
+                {projet.Role_texte && (
+                    <section>
+                        <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
+                            Mon rôle
+                        </h2>
+                        <p class="bodyr">{projet.Role_texte}</p>
+                    </section>
+                )}
+                {projet.Processus && (
+                    <section>
+                        <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
+                            Processus
+                        </h2>
+                        <p class="bodyr">{projet.Processus}</p>
+                    </section>
+                )}
+                {images.length > 0 && (
+                    <section data-carousel>
+                        <div class="relative aspect-[1.4] overflow-hidden bg-primary">
+                            {images.map((image, index) => (
+                                <img
+                                    src={getImageUrl(projet, image, "900x0")}
+                                    alt={`${projet.Titre} - image ${index + 1}`}
+                                    class:list={[
+                                        "absolute inset-0 h-full w-full object-contain transition-opacity",
+                                        { "opacity-100": index === 0, "opacity-0": index !== 0 },
+                                    ]}
+                                    data-carousel-image
+                                    data-index={index}
+                                />
+                            ))}
+                            {images.length > 1 && (
+                                <div class="absolute inset-x-0 bottom-3 flex justify-center gap-2">
+                                    {images.map((_, index) => (
+                                        <button
+                                            type="button"
+                                            class:list={[
+                                                "h-2 w-2 rounded-full bg-white transition-opacity",
+                                                { "opacity-100": index === 0, "opacity-50": index !== 0 },
+                                            ]}
+                                            aria-label={`Afficher l'image ${index + 1}`}
+                                            aria-current={index === 0 ? "true" : "false"}
+                                            data-carousel-dot
+                                            data-index={index}
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </section>
+                )}
+                {projet.Resultat && (
+                    <section>
+                        <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
+                            Résultat
+                        </h2>
+                        <p class="bodyr">{projet.Resultat}</p>
+                    </section>
+                )}
+            </div>
+        </article>
+    </main>
+</Layout>
+
+<script>
+    const carousels = document.querySelectorAll("[data-carousel]");
+
+    carousels.forEach((carousel) => {
+        const images = carousel.querySelectorAll("[data-carousel-image]");
+        const dots = carousel.querySelectorAll("[data-carousel-dot]");
+
+        const showImage = (index) => {
+            images.forEach((image, imageIndex) => {
+                image.classList.toggle("opacity-100", imageIndex === index);
+                image.classList.toggle("opacity-0", imageIndex !== index);
+            });
+            dots.forEach((dot, dotIndex) => {
+                dot.classList.toggle("opacity-100", dotIndex === index);
+                dot.classList.toggle("opacity-50", dotIndex !== index);
+                dot.setAttribute("aria-current", String(dotIndex === index));
+            });
+        };
+
+        dots.forEach((dot) => {
+            dot.addEventListener("click", () => {
+                showImage(Number(dot.dataset.index));
+            });
+        });
+    });
+</script>

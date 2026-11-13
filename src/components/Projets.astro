@@ -5,16 +5,52 @@ const projets = await getProjets();
 const projetsAvecImage = projets.map((projet) => ({
     projet,
     image: Array.isArray(projet.Image) ? projet.Image[0] : projet.Image,
+    categorie: Array.isArray(projet.Tag) ? projet.Tag.join(", ") : projet.Tag,
 }));
 ---
 
 <section class="w-full" aria-labelledby="projets-title">
     <h2 id="projets-title" class="sr-only">Projets</h2>
+    <div
+        class="mb-12 flex flex-wrap items-center justify-center gap-4"
+        role="group"
+        aria-label="Filtrer les projets"
+        data-project-filters
+    >
+        <button
+            type="button"
+            class="rounded-full border border-primary bg-primary px-8 py-4 text-primary-content transition-colors hover:bg-primary/80"
+            aria-pressed="true"
+            data-project-filter="tous"
+        >
+            Tous
+        </button>
+        <button
+            type="button"
+            class="rounded-full border border-secondary px-8 py-4 text-secondary transition-colors hover:bg-secondary/10"
+            aria-pressed="false"
+            data-project-filter="personnel"
+        >
+            Personnel
+        </button>
+        <button
+            type="button"
+            class="rounded-full border border-secondary px-8 py-4 text-secondary transition-colors hover:bg-secondary/10"
+            aria-pressed="false"
+            data-project-filter="academique"
+        >
+            Académique
+        </button>
+    </div>
     {
         projets.length > 0 ? (
-            <div class="flex flex-col gap-10">
-                {projetsAvecImage.map(({ projet, image }) => (
-                    <article class="grid items-center gap-6 md:grid-cols-[280px_minmax(0,1fr)] md:gap-4">
+            <div class="flex flex-col gap-10" data-project-list>
+                {projetsAvecImage.map(({ projet, image, categorie }) => (
+                    <article
+                        class="grid items-center gap-6 md:grid-cols-[280px_minmax(0,1fr)] md:gap-4"
+                        data-project-card
+                        data-project-category={categorie}
+                    >
                         <div class="aspect-[1.4] w-full overflow-hidden bg-primary">
                             {image ? (
                                 <img
@@ -57,9 +93,57 @@ const projetsAvecImage = projets.map((projet) => ({
                         </div>
                     </article>
                 ))}
+                <p class="hidden text-center text-neutral" data-project-empty>
+                    Aucun projet dans cette catégorie.
+                </p>
             </div>
         ) : (
             <p class="bodyr text-neutral">Aucun projet disponible.</p>
         )
     }
 </section>
+
+<script>
+    const normalizeCategory = (value) =>
+        value
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+
+    document.querySelectorAll("[data-project-filters]").forEach((filters) => {
+        const cards = document.querySelectorAll("[data-project-card]");
+        const emptyMessage = document.querySelector("[data-project-empty]");
+
+        filters.querySelectorAll("[data-project-filter]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const selectedFilter = button.dataset.projectFilter;
+                let visibleProjects = 0;
+
+                filters.querySelectorAll("[data-project-filter]").forEach((filterButton) => {
+                    const isSelected =
+                        filterButton.dataset.projectFilter === selectedFilter;
+
+                    filterButton.setAttribute("aria-pressed", String(isSelected));
+                    filterButton.classList.toggle("bg-primary", isSelected);
+                    filterButton.classList.toggle("text-primary-content", isSelected);
+                    filterButton.classList.toggle("border-primary", isSelected);
+                    filterButton.classList.toggle("text-secondary", !isSelected);
+                    filterButton.classList.toggle("border-secondary", !isSelected);
+                });
+
+                cards.forEach((card) => {
+                    const isVisible =
+                        selectedFilter === "tous" ||
+                        normalizeCategory(card.dataset.projectCategory ?? "").includes(
+                            selectedFilter,
+                        );
+
+                    card.classList.toggle("hidden", !isVisible);
+                    if (isVisible) visibleProjects += 1;
+                });
+
+                emptyMessage?.classList.toggle("hidden", visibleProjects > 0);
+            });
+        });
+    });
+</script>
