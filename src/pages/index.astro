@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
 import trees from "../assets/trees.glb";
 import branch from "../assets/branche.svg";
 ---
@@ -33,6 +34,33 @@ import branch from "../assets/branche.svg";
         <h1>Bienvenue <br/>
         dans mon jardin en <span class="accent-title text-primary text-stroke-secondary">effervescence.</span></h1>
     </div>
+    <section id="a-propos" class="mt-24 bg-primary px-6 py-16 sm:px-10 lg:px-20 lg:py-20">
+        <h2 class="mb-16 text-center font-serif text-4xl font-normal leading-none text-base-content sm:text-5xl">
+            Qui suis-je ?
+        </h2>
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <p class="font-serif text-4xl font-normal leading-[1.1] text-base-content sm:text-5xl">
+                Mon but final, créer des mondes uniques<br />
+                et transformer chaque idée en une réalité.
+            </p>
+            <div class="flex flex-col items-start gap-12">
+                <p class="max-w-xl text-base leading-relaxed text-base-content">
+                    En MMI, je relie création graphique, développement web et
+                    image en mouvement. Mon approche part d’une idée simple :
+                    donner à chaque projet une atmosphère qui lui appartient
+                    vraiment.
+                </p>
+                <div class="flex flex-wrap gap-8">
+                    <Button color="secondary" elevated href="/competences">
+                        Mes Compétences
+                    </Button>
+                    <Button color="secondary" elevated href="/cv.pdf">
+                        Mon CV
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="contact" class="contact-section">
         <h2 id="contact-title">
             Construisons quelque chose<br />
