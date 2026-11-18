@@ -6,6 +6,7 @@ interface Props {
   outline?: boolean;
   elevated?: boolean;
   href?: string;
+  download?: string | boolean;
   type?: "button" | "submit" | "reset";
 }
 
@@ -14,6 +15,7 @@ const {
   outline = false,
   elevated = false,
   href,
+  download,
   type = "button",
 } = Astro.props;
 
@@ -32,7 +34,11 @@ const classes = [
 
 {
   href ? (
-    <a class:list={classes} href={href}>
+    <a
+      class:list={classes}
+      href={href}
+      download={download === true ? "" : download || undefined}
+    >
       <slot />
     </a>
   ) : (
