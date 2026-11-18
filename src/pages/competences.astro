@@ -6,11 +6,11 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Compétences">
     <div class="lg:portfolio-grid lg:col-span-11">
-        <h1 class="text-primary lg:col-start-2 lg:col-span-9">Mes compétences</h1>
-        <main class="px-5 py-24 lg:col-start-2 lg:col-span-9">
+        <h1 class="px-5 text-[clamp(2.75rem,10vw,6rem)] leading-none text-primary lg:col-start-2 lg:col-span-9 lg:px-0">Mes compétences</h1>
+        <div class="px-5 py-16 sm:py-24 lg:col-start-2 lg:col-span-9 lg:px-0">
             <CompetencesLogiciel />
-            <h2 class="mt-20 text-accent">Techniques</h2>
+            <h2 class="mt-20 text-[clamp(2.25rem,8vw,4.1875rem)] text-accent">Techniques</h2>
             <CompetencesTechniques />
-        </main>
+        </div>
     </div>
 </Layout>

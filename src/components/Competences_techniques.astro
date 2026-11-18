@@ -4,13 +4,13 @@ import { getCompetencesTechniques } from "../scripts/pocketbase.mjs";
 const competences = await getCompetencesTechniques();
 ---
 
-<section class="w-[309px]" aria-labelledby="technical-skills-title">
+<section class="w-full" aria-labelledby="technical-skills-title">
     <h2 class="sr-only bodyl">
         Compétences techniques
     </h2>
     {
         competences.length > 0 ? (
-            <div>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {competences.map((competence) => (
                     <article class="flex min-h-[6.5rem] flex-col items-center justify-center rounded-[2rem] bg-primary px-5 py-4 text-center text-white">
                         <h3 class="font-family text-xl font-normal leading-tight">

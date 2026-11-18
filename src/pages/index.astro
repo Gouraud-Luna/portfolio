@@ -6,7 +6,7 @@ import trees from "../assets/trees.glb";
 import branch from "../assets/branche.svg";
 ---
 <Layout title="Acceuil" bodyClass="home-page">
-    <section class="relative z-0 h-screen w-full overflow-hidden lg:col-span-11">
+    <section class="relative z-0 h-[65vh] min-h-[430px] w-full overflow-hidden sm:h-[75vh] lg:h-screen lg:col-span-11">
         <model-viewer
             class="absolute inset-x-0 top-0 z-0 block h-[calc(100%+40px)] w-full"
             src={trees}
@@ -21,9 +21,9 @@ import branch from "../assets/branche.svg";
             shadow-intensity="1"
         ></model-viewer>
     </section>
-    <div class="relative z-20 -mt-[200px] h-[367.44px] w-full lg:col-span-11">
+    <div class="relative z-20 -mt-28 h-[180px] w-full overflow-hidden sm:-mt-36 sm:h-[260px] lg:-mt-[200px] lg:h-[367.44px] lg:col-span-11">
         <img
-            class="pointer-events-none absolute left-1/2 top-0 h-[367.44px] w-[1512px] max-w-none -translate-x-1/2"
+            class="pointer-events-none absolute left-1/2 top-0 h-full w-[100vw] max-w-none -translate-x-1/2 sm:w-[1100px] lg:w-[1512px]"
             src={branch.src}
             alt=""
             aria-hidden="true"
@@ -31,16 +31,16 @@ import branch from "../assets/branche.svg";
             height="367.44"
         />
     </div>
-    <div class="whitespace-nowrap lg:col-start-2 lg:col-span-9">
-        <h1>Bienvenue <br/>
-        dans mon jardin en <span class="accent-title text-primary text-stroke-secondary">effervescence.</span></h1>
+    <div class="pt-8 lg:col-start-2 lg:col-span-9">
+        <h1 class="text-[clamp(2.25rem,11vw,6rem)] leading-[1.02]">Bienvenue <br/>
+        dans mon jardin en <span class="accent-title text-primary text-stroke-secondary text-[clamp(3.5rem,13vw,7.25rem)]">effervescence.</span></h1>
     </div>
-    <section id="a-propos" class="mt-24 bg-primary px-6 py-16 sm:px-10 lg:portfolio-grid lg:col-span-11 lg:px-20 lg:py-20">
+    <section id="a-propos" class="-mx-4 mt-24 w-[calc(100%+2rem)] bg-primary px-6 py-16 sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-10 lg:mx-0 lg:w-auto lg:portfolio-grid lg:col-span-11 lg:px-20 lg:py-20">
         <h2 class="mb-16 text-center font-serif text-4xl font-normal leading-none text-base-content sm:text-5xl lg:col-start-2 lg:col-span-9">
             Qui suis-je ?
         </h2>
         <div class="mx-auto grid max-w-7xl items-center gap-12 lg:col-start-2 lg:col-span-9 lg:grid-cols-2 lg:gap-20">
-            <p class="font-serif text-4xl font-normal leading-[1.1] text-base-content sm:text-5xl">
+            <p class="font-serif text-[clamp(1.75rem,8vw,3rem)] font-normal leading-[1.1] text-base-content sm:text-5xl">
                 Mon but final, créer des mondes uniques<br />
                 et transformer chaque idée en une réalité.
             </p>
@@ -62,7 +62,7 @@ import branch from "../assets/branche.svg";
             </div>
         </div>
     </section>
-    <section class="px-6 py-20 sm:px-10 lg:portfolio-grid lg:col-span-11 lg:px-20 lg:py-28" aria-labelledby="projets-accueil-title">
+    <section class="-mx-4 w-[calc(100%+2rem)] px-6 py-20 sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-10 lg:mx-0 lg:w-auto lg:portfolio-grid lg:col-span-11 lg:px-20 lg:py-28" aria-labelledby="projets-accueil-title">
         <div class="mx-auto max-w-7xl lg:col-start-2 lg:col-span-9">
             <div class="mb-12 flex flex-wrap items-end justify-between gap-6">
                 <h2
@@ -81,7 +81,7 @@ import branch from "../assets/branche.svg";
             <Projets showFilters={false} limit={3} />
         </div>
     </section>
-    <section id="contact" class="contact-section lg:portfolio-grid lg:col-span-11">
+    <section id="contact" class="contact-section -mx-4 w-[calc(100%+2rem)] sm:-mx-6 sm:w-[calc(100%+3rem)] lg:mx-0 lg:w-auto lg:portfolio-grid lg:col-span-11">
         <h2 id="contact-title" class="lg:col-start-2 lg:col-span-9">
             Construisons quelque chose<br />
             <span class="contact-accent">ensemble.</span>

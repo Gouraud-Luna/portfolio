@@ -2,13 +2,12 @@
 import Button from "./Button.astro";
 ---
 
-<header class="top-0 z-20 mx-auto mb-[16px] flex h-[115px] w-[94.5rem] max-w-full flex-wrap items-center text-base lg:portfolio-grid">
-  <a class="lg:col-start-2 bodys" href="/">Luna Gouraud</a>
-  <p class="whitespace-nowrap lg:col-start-3 text-accent bodyl">Étudiante en MMI</p>
+<header class="relative z-20 mx-auto mb-4 flex min-h-[115px] w-full max-w-[1512px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-5 text-base sm:px-6 lg:px-0 lg:portfolio-grid">
+  <a class="bodys lg:col-start-2" href="/">Luna Gouraud</a>
+  <p class="whitespace-nowrap text-accent bodys lg:col-start-3 lg:col-span-2 lg:text-[28px]">Étudiante en MMI</p>
 
-  <nav class="flex items-center gap-7 lg:col-start-7 lg:col-span-5" aria-label="Navigation principale">
-    
-    <div class="flex items-center gap-7 bodyl">
+  <nav class="w-full lg:col-start-7 lg:col-span-5 lg:w-auto" aria-label="Navigation principale">
+    <div class="flex flex-wrap items-center gap-4 bodys sm:gap-7 lg:justify-end lg:text-[28px]">
       <a href="/projets">Projets</a>
       <a href="/#a-propos">A propos</a>
       <Button color="accent" href="/#contact">

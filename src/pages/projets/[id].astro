@@ -24,12 +24,12 @@ const valeur = (value) => value || "—";
 ---
 
 <Layout title={projet.Titre}>
-    <main class="px-5 pb-24 pt-8 md:px-12 lg:portfolio-grid lg:col-span-11 lg:px-20">
+    <div class="px-1 pb-24 pt-8 md:px-0 lg:portfolio-grid lg:col-span-11">
         <article class="mx-auto max-w-6xl lg:col-start-2 lg:col-span-9">
             <div>
                 <div>
                     <p class="mb-5 text-accent">{valeur(tags)}</p>
-                    <h1 class="max-w-md font-serif text-5xl font-normal leading-[0.95] text-primary sm:text-6xl">
+                    <h1 class="max-w-md font-serif text-[clamp(2.75rem,10vw,6rem)] font-normal leading-[0.95] text-primary">
                         {projet.Titre}
                     </h1>
                 </div>
@@ -56,7 +56,7 @@ const valeur = (value) => value || "—";
                         <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
                             Contexte
                         </h2>
-                        <p class="bodyr">{projet.Contexte}</p>
+                        <p class="bodyr text-lg md:text-[22px]">{projet.Contexte}</p>
                     </section>
                 )}
                 {projet.Role_texte && (
@@ -64,7 +64,7 @@ const valeur = (value) => value || "—";
                         <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
                             Mon rôle
                         </h2>
-                        <p class="bodyr">{projet.Role_texte}</p>
+                        <p class="bodyr text-lg md:text-[22px]">{projet.Role_texte}</p>
                     </section>
                 )}
                 {projet.Processus && (
@@ -72,7 +72,7 @@ const valeur = (value) => value || "—";
                         <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
                             Processus
                         </h2>
-                        <p class="bodyr">{projet.Processus}</p>
+                        <p class="bodyr text-lg md:text-[22px]">{projet.Processus}</p>
                     </section>
                 )}
                 {images.length > 0 && (
@@ -115,12 +115,12 @@ const valeur = (value) => value || "—";
                         <h2 class="mb-3 font-serif text-3xl font-normal text-primary">
                             Résultat
                         </h2>
-                        <p class="bodyr">{projet.Resultat}</p>
+                        <p class="bodyr text-lg md:text-[22px]">{projet.Resultat}</p>
                     </section>
                 )}
             </div>
         </article>
-    </main>
+    </div>
 </Layout>
 
 <script>
