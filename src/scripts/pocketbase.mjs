@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase('https://https://pb.luna-gouraud.fr:443');
+export const pb = new PocketBase('https://pb.luna-gouraud.fr:443');
 
 export default pb;
 
